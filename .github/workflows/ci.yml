@@ -22,12 +22,14 @@ jobs:
       
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
+        working-directory: ./demo
       
       - name: Đóng gói tệp JAR với Gradle
         run: ./gradlew bootJar
+        working-directory: ./demo
       
       - name: Lưu trữ thành phẩm JAR Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-jar
-          path: build/libs/*.jar
+          path: demo/build/libs/*.jar
